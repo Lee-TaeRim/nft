@@ -440,4 +440,17 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
         address to,
         uint256 tokenId
     ) internal virtual {}
+
+    /**
+     * @dev Sets tokenURI for `tokenId`.
+     *
+     * Requirements:
+     *
+     * - `tokenId` must exist.
+     * - `newTokenURI` can be IPFS uri.
+     */
+    function _setTokenURI(uint256 tokenId, string memory newTokenURI) internal virtual {
+        require(_exists(tokenId), "ERC721Metadata: setURI transaction for nonexistent token");
+        _tokenURI[tokenId] = newTokenURI;
+    }
 }

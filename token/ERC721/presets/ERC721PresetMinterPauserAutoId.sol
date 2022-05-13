@@ -127,4 +127,17 @@ contract ERC721PresetMinterPauserAutoId is
     {
         return super.supportsInterface(interfaceId);
     }
+
+    /**
+     * @dev Sets a new tokenURI for `tokenId`
+     * See {ERC721-_setTokenURI}.
+     *
+     * Requirements:
+     *
+     * - the caller must have the `MINTER_ROLE`.
+     */
+    function setTokenURI(uint256 tokenId, string memory newTokenURI) public virtual {
+        require(hasRole(MINTER_ROLE, _msgSender()), "ERC721PresetMinterPauserAutoId: must have minter role to set URI");
+        _setTokenURI(tokenId, newTokenURI);
+    }
 }
