@@ -1,0 +1,18 @@
+{
+    "name":"미국에서 온 신입생 문월입니다",
+    "description":"2021년에 핫한 BJ 중 한 명이었던 BJ문월님! 문월님의 아프리카TV 첫 방송을 진행한 다시보기 영상 NFT 상품입니다.",
+    "image":"ipfs://bafybeidsuvacp7u76s63odvqo45kmr5m2wa6sxxsgw67wytlkqjo3m4mei",
+    "external_url":"https://aftmarket.tv/",
+    "animation_url":"https://aftmarketmediaservice-koct1.streaming.media.azure.net/30437158-2ffe-435f-8fe6-710a6b60aaf6/7_f.ism/manifest(format=m3u8-cmaf)",
+    "animation_type":"cmaf",
+    "attributes":[
+        {
+            "trait_type":"Creator",
+            "value":"AFTmarket"
+        },
+        {
+            "trait_type":"Product type",
+            "value":"VOD"
+        }
+    ]
+}
