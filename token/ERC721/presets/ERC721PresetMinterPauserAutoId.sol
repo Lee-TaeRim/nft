@@ -42,8 +42,6 @@ contract ERC721PresetMinterPauserAutoId is
 
     Counters.Counter private _tokenIdTracker;
 
-    string private _baseTokenURI;
-
     /**
      * @dev Grants `DEFAULT_ADMIN_ROLE`, `MINTER_ROLE` and `PAUSER_ROLE` to the
      * account that deploys the contract.
@@ -53,19 +51,12 @@ contract ERC721PresetMinterPauserAutoId is
      */
     constructor(
         string memory name,
-        string memory symbol,
-        string memory baseTokenURI
+        string memory symbol
     ) ERC721(name, symbol) {
-        _baseTokenURI = baseTokenURI;
-
         _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
 
         _setupRole(MINTER_ROLE, _msgSender());
         _setupRole(PAUSER_ROLE, _msgSender());
-    }
-
-    function _baseURI() internal view virtual override returns (string memory) {
-        return _baseTokenURI;
     }
 
     /**
@@ -79,12 +70,12 @@ contract ERC721PresetMinterPauserAutoId is
      *
      * - the caller must have the `MINTER_ROLE`.
      */
-    function mint(address to) public virtual {
+    function mint(address to, string memory newTokenURI) public virtual {
         require(hasRole(MINTER_ROLE, _msgSender()), "ERC721PresetMinterPauserAutoId: must have minter role to mint");
 
         // We cannot just use balanceOf to create the new tokenId because tokens
         // can be burned (destroyed), so we need a separate counter.
-        _mint(to, _tokenIdTracker.current());
+        _mint(to, _tokenIdTracker.current(), newTokenURI);
         _tokenIdTracker.increment();
     }
 
